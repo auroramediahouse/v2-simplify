@@ -23,8 +23,24 @@ const ZapIcon = () => (
   </svg>
 )
 
-// PricingPlan component
-const PricingPlan = ({ name, price, description, apiCalls, buttonText, featured = false }) => (
+// PricingPlan component (updated)
+interface PricingPlanProps {
+  name: string;
+  price: number;
+  description: string;
+  apiCalls: string;
+  buttonText: string;
+  featured?: boolean;
+}
+
+const PricingPlan: React.FC<PricingPlanProps> = ({ 
+  name, 
+  price, 
+  description, 
+  apiCalls, 
+  buttonText, 
+  featured = false 
+}) => (
   <div className={`bg-white rounded-lg shadow-lg p-6 flex flex-col ${featured ? 'border-4 border-blue-500 transform scale-105' : ''}`}>
     <h3 className={`text-xl font-bold mb-2 ${featured ? 'text-blue-600' : ''}`}>{name}</h3>
     <p className="text-gray-600 mb-4">{description}</p>
@@ -185,7 +201,7 @@ const ComparisonSection = () => {
           <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
             <div className="flex justify-center mb-4">
               <Image 
-                src="/path-to-before-image.png" 
+                src="https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/ngpx2b8297eg/stress.gif" 
                 alt="Before ZappyChat" 
                 width={200} 
                 height={200}
@@ -209,7 +225,7 @@ const ComparisonSection = () => {
           <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
             <div className="flex justify-center mb-4">
               <Image 
-                src="/path-to-after-image.png" 
+                src="https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/e54tz6y3soui/Happy.gif" 
                 alt="With ZappyChat" 
                 width={200} 
                 height={200}
@@ -231,144 +247,144 @@ const ComparisonSection = () => {
   );
 };
 
-// Main UpgradeFlow component
+// Main UpgradeFlow component (continued)
 const UpgradeFlow = () => {
-    const integrations = [
-      {
-        name: 'Make',
-        logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/2968wffoe9n5/make-logo-freelogovectors.net_.png'
-      },
-      {
-        name: 'Zapier',
-        logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/tsh91f2x71ue/zapier-2.svg'
-      },
-      {
-        name: 'Pabbly',
-        logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/yjjfjx38wioj/Pabbly-SVG.svg'
-      },
-      {
-        name: 'n8n',
-        logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/f8b34d55h0pp/pngwing.com.png'
-      }
-    ];
-  
-    const steps = [
-      {
-        title: "Connect",
-        icon: <ArrowRightIcon />,
-        description: "Log in to your GoHighLevel account and link your Agency and Sub-accounts.",
-        image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
-      },
-      {
-        title: "Authenticate",
-        icon: <KeyIcon />,
-        description: "Obtain your access token through a simple REST API GET request.",
-        image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
-      },
-      {
-        title: "Automate",
-        icon: <ZapIcon />,
-        description: "Start creating powerful, custom automations in seconds.",
-        image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
-      },
-      {
-        title: "Optimize",
-        icon: <ZapIcon />,
-        description: "Access all API functionality for peak performance and scalability.",
-        image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
-      }
-    ];
-  
-    return (
-      <div className="min-h-screen flex flex-col">
-        <header className="bg-purple-600 p-8 flex justify-between items-center">
-          <h1 className="text-4xl font-bold text-white">V2 Simplify</h1>
-          <nav>
-            <button className="mr-4 bg-transparent border border-white text-white px-4 py-2 rounded">LOGIN</button>
-            <button className="bg-white text-purple-600 px-4 py-2 rounded">SIGN UP</button>
-          </nav>
-        </header>
-  
-        <main className="flex-grow">
-          {/* Hero Section and Integrations */}
-          <section className="w-full bg-gradient-to-br from-purple-600 to-pink-500 py-16">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-5xl font-bold text-white mb-4">Upgrade HighLevel V2 API Instantly</h2>
-              <p className="text-xl text-white mb-8">
-                Create automation seamlessly.<br />
-                Access all functionality in a split second.
-              </p>
-              <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg mb-16">
-                GET FREE TRIAL
-              </button>
-  
-              <div className="integrations-container flex flex-wrap justify-center items-center gap-8">
-                {integrations.map((tool) => (
-                  <div key={tool.name} className="integration-box bg-white p-4 rounded-lg shadow-md flex items-center justify-center w-40 h-20">
+  const integrations = [
+    {
+      name: 'Make',
+      logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/2968wffoe9n5/make-logo-freelogovectors.net_.png'
+    },
+    {
+      name: 'Zapier',
+      logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/tsh91f2x71ue/zapier-2.svg'
+    },
+    {
+      name: 'Pabbly',
+      logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/yjjfjx38wioj/Pabbly-SVG.svg'
+    },
+    {
+      name: 'n8n',
+      logo: 'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/f8b34d55h0pp/pngwing.com.png'
+    }
+  ];
+
+  const steps = [
+    {
+      title: "Connect",
+      icon: <ArrowRightIcon />,
+      description: "Log in to your GoHighLevel account and link your Agency and Sub-accounts.",
+      image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
+    },
+    {
+      title: "Authenticate",
+      icon: <KeyIcon />,
+      description: "Obtain your access token through a simple REST API GET request.",
+      image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
+    },
+    {
+      title: "Automate",
+      icon: <ZapIcon />,
+      description: "Start creating powerful, custom automations in seconds.",
+      image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
+    },
+    {
+      title: "Optimize",
+      icon: <ZapIcon />,
+      description: "Access all API functionality for peak performance and scalability.",
+      image: "https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/apmx6fhhx7lh/Step_1.jpg"
+    }
+  ];
+
+  return (
+    <div className="min-h-screen flex flex-col">
+      <header className="bg-purple-600 p-8 flex justify-between items-center">
+        <h1 className="text-4xl font-bold text-white">V2 Simplify</h1>
+        <nav>
+          <button className="mr-4 bg-transparent border border-white text-white px-4 py-2 rounded">LOGIN</button>
+          <button className="bg-white text-purple-600 px-4 py-2 rounded">SIGN UP</button>
+        </nav>
+      </header>
+
+      <main className="flex-grow">
+        {/* Hero Section and Integrations */}
+        <section className="w-full bg-gradient-to-br from-purple-600 to-pink-500 py-16">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-5xl font-bold text-white mb-4">Upgrade HighLevel V2 API Instantly</h2>
+            <p className="text-xl text-white mb-8">
+              Create automation seamlessly.<br />
+              Access all functionality in a split second.
+            </p>
+            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg mb-16">
+              GET FREE TRIAL
+            </button>
+
+            <div className="integrations-container flex flex-wrap justify-center items-center gap-8">
+              {integrations.map((tool) => (
+                <div key={tool.name} className="integration-box bg-white p-4 rounded-lg shadow-md flex items-center justify-center w-40 h-20">
+                  <Image 
+                    src={tool.logo} 
+                    alt={`${tool.name} logo`} 
+                    width={100} 
+                    height={40} 
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="w-full bg-white py-16">
+          <div className="container mx-auto px-4">
+            <h3 className="text-3xl font-semibold mb-8 text-center text-gray-800">How It Works:</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {steps.map((step, index) => (
+                <div key={index} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                  <div className="relative w-full pb-[56.25%]">
                     <Image 
-                      src={tool.logo} 
-                      alt={`${tool.name} logo`} 
-                      width={100} 
-                      height={40} 
-                      style={{ objectFit: "contain" }}
+                      src={step.image}
+                      alt={`Step ${index + 1}: ${step.title}`}
+                      fill
+                      style={{ objectFit: "cover" }}
                     />
                   </div>
-                ))}
-              </div>
-            </div>
-          </section>
-  
-          {/* How It Works Section */}
-          <section className="w-full bg-white py-16">
-            <div className="container mx-auto px-4">
-              <h3 className="text-3xl font-semibold mb-8 text-center text-gray-800">How It Works:</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {steps.map((step, index) => (
-                  <div key={index} className="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
-                    <div className="relative w-full pb-[56.25%]">
-                      <Image 
-                        src={step.image}
-                        alt={`Step ${index + 1}: ${step.title}`}
-                        fill
-                        style={{ objectFit: "cover" }}
-                      />
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="mr-4 text-blue-600">
-                          {step.icon}
-                        </div>
-                        <h4 className="text-xl font-semibold">{`${index + 1}. ${step.title}`}</h4>
+                  <div className="p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="mr-4 text-blue-600">
+                        {step.icon}
                       </div>
-                      <p>{step.description}</p>
+                      <h4 className="text-xl font-semibold">{`${index + 1}. ${step.title}`}</h4>
                     </div>
+                    <p>{step.description}</p>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
-          </section>
-  
-          {/* Comparison Section */}
-          <ComparisonSection />
-  
-          {/* Pricing Section */}
-          <section className="w-full bg-gray-100 py-16">
-            <div className="container mx-auto px-4">
-              <PricingSection />
-            </div>
-          </section>
-  
-          {/* FAQ Section */}
-          <section className="w-full bg-white py-16">
-            <div className="container mx-auto px-4">
-              <FAQ />
-            </div>
-          </section>
-        </main>
-        
-        <Footer />
-      </div>
-    );
-  };
-  
-  export default UpgradeFlow;
+          </div>
+        </section>
+
+        {/* Comparison Section */}
+        <ComparisonSection />
+
+        {/* Pricing Section */}
+        <section className="w-full bg-gray-100 py-16">
+          <div className="container mx-auto px-4">
+            <PricingSection />
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="w-full bg-white py-16">
+          <div className="container mx-auto px-4">
+            <FAQ />
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
+    </div>
+  );
+};
+
+export default UpgradeFlow;
