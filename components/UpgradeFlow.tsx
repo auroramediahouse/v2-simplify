@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from 'react'
-import Image from 'next/image'
+import React, { useState } from 'react';
+import Image from 'next/image';
 
 // Icon components
 const ArrowRightIcon = () => (
@@ -9,21 +9,21 @@ const ArrowRightIcon = () => (
     <line x1="5" y1="12" x2="19" y2="12"></line>
     <polyline points="12 5 19 12 12 19"></polyline>
   </svg>
-)
+);
 
 const KeyIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path>
   </svg>
-)
+);
 
 const ZapIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
   </svg>
-)
+);
 
-// PricingPlan component (updated)
+// PricingPlan component
 interface PricingPlanProps {
   name: string;
   price: number;
@@ -61,8 +61,8 @@ const PricingPlan: React.FC<PricingPlanProps> = ({
 );
 
 // PricingSection component
-const PricingSection = () => {
-  const plans = [
+const PricingSection: React.FC = () => {
+  const plans: PricingPlanProps[] = [
     { name: 'Free', price: 0, description: 'Single CRM sub-account', apiCalls: '50 API calls/month', buttonText: 'Get Started' },
     { name: 'Basic', price: 29, description: 'Single CRM sub-account', apiCalls: '10,000 API calls/month', buttonText: 'Get Started', featured: true },
     { name: 'Standard', price: 49, description: '10 CRM sub-accounts', apiCalls: '10,000 API calls/month', buttonText: 'Coming Soon' },
@@ -87,7 +87,12 @@ const PricingSection = () => {
 };
 
 // FAQ components
-const FAQItem = ({ question, answer }) => {
+interface FAQItemProps {
+  question: string;
+  answer: string;
+}
+
+const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -115,8 +120,8 @@ const FAQItem = ({ question, answer }) => {
   );
 };
 
-const FAQ = () => {
-  const faqs = [
+const FAQ: React.FC = () => {
+  const faqs: FAQItemProps[] = [
     {
       question: "Couldn't I build this myself and save money?",
       answer: "You could, but there are good reasons for not doing so. The vast majority of the cost to use V2 Simplify is provider fees which you would have to incur anyway. While we do add a small base fee, this is more than offset by the fact that we support and maintain the whole system, and continue to reduce latency and improve the experience. You even have the option of bringing your own Provider Keys, and only paying us for the value we provide. We specialize in API integration and it's where we devote our time and resources, so we'll always be leading the way. This lets you keep your focus on building exceptional products."
@@ -144,7 +149,7 @@ const FAQ = () => {
 };
 
 // Footer component
-const Footer = () => {
+const Footer: React.FC = () => {
   const navLinks = ['Docs', 'Pricing', 'Security', 'Enterprise', 'Blog', 'Privacy Policy', 'Terms of Service'];
   
   return (
@@ -171,16 +176,16 @@ const Footer = () => {
 };
 
 // ComparisonSection component
-const ComparisonSection = () => {
+const ComparisonSection: React.FC = () => {
   const comparisons = [
     { before: "Manually Respond To Every Inbound Lead", after: "Automatically Respond To Multiple Leads At Once" },
-    { before: "Slow Respone Times", after: "Instant Responses" },
+    { before: "Slow Response Times", after: "Instant Responses" },
     { before: "Wasted Time & Energy", after: "Dedicate Time & Energy Elsewhere" },
     { before: "Working Afterhours", after: "Coverage 24 Hours Per Day, 7 Days Per Week, 365 Days Out Of The Year" },
     { before: "Limited Brand Accessibility", after: "Increased Brand Trust" },
     { before: "Manually Answer FAQs, Book Appointments & Update Contacts", after: "Automate Small Time Consuming Tasks" },
     { before: "Decreased Sales", after: "Increase Sales & Conversions" },
-    { before: "Deal With Poor Quality Leads", after: "Qualify Every Inboud Lead On Autopilot" },
+    { before: "Deal With Poor Quality Leads", after: "Qualify Every Inbound Lead On Autopilot" },
   ];
 
   return (
@@ -201,9 +206,9 @@ const ComparisonSection = () => {
           <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
             <div className="flex justify-center mb-4">
               <Image 
-                src="https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/ngpx2b8297eg/stress.gif" 
-                alt="Before ZappyChat" 
-                width={200} 
+                src="https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/ngpx2b8297eg/stress.gif"
+                alt="Before ZappyChat"
+                width={200}
                 height={200}
               />
             </div>
@@ -225,9 +230,9 @@ const ComparisonSection = () => {
           <div className="flex-1 bg-white rounded-lg shadow-lg p-6">
             <div className="flex justify-center mb-4">
               <Image 
-                src="https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/e54tz6y3soui/Happy.gif" 
-                alt="With ZappyChat" 
-                width={200} 
+                src="https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/get-token-0a59vx/assets/e54tz6y3soui/Happy.gif"
+                alt="With ZappyChat"
+                width={200}
                 height={200}
               />
             </div>
@@ -247,8 +252,8 @@ const ComparisonSection = () => {
   );
 };
 
-// Main UpgradeFlow component (continued)
-const UpgradeFlow = () => {
+// Main UpgradeFlow component
+const UpgradeFlow: React.FC = () => {
   const integrations = [
     {
       name: 'Make',
